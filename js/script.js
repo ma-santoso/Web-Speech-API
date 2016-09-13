@@ -15,13 +15,25 @@ document.addEventListener('DOMContentLoaded', function() {
 			recognition.onstart = function() {
 				showInfo('info_active');
 			}
-			recognition.onend = function() {
-				showInfo('info_start');
-				recognition.onresult = function(event) {
-					var text = event.results[0][0].transcript;
-					console.log(text);
-					result.innerHTML = text;
-				}
+		}
+
+		recognition.onend = function() {
+			showInfo('info_start');
+			recognition.onresult = function(event) {
+				var text = event.results[0][0].transcript;
+				console.log(text);
+				result.innerHTML = text;
+			}
+		}
+
+		recognition.onerror = function() {
+			if (event.error == 'no-speech') {
+				console.log('NO SPEECH');
+				showInfo('info_nospeech');
+			}
+			if (event.error == 'audio-capture') {
+				console.log('NO MIC');
+				showInfo('info_nomic');
 			}
 		}
 
