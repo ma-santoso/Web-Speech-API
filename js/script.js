@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			showInfo('info_start');
 			recognition.onresult = function(event) {
 				var text = event.results[0][0].transcript;
+				var result = document.getElementById('result');
 				console.log(text);
 				result.innerHTML = text;
 			}
