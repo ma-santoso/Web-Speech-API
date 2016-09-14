@@ -15,17 +15,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		recognition.onstart = function() {
 			showInfo('info_active');
+			console.log("STATUS: listening...");
 		}
 
 		recognition.onresult = function(event) {
 			var text = event.results[0][0].transcript;
 			var result = document.getElementById('result');
-			console.log('RECOGNIZED TEXT: ' + text);
 			result.innerHTML = text;
+			showInfo('info_start');
+			console.log('RECOGNIZED TEXT: ' + text);
 		}
 
 		recognition.onerror = function(event) {
-			console.log('ERROR: ' + event.error)
 			if (event.error == 'no-speech') {
 				showInfo('er_nospeech');
 			}
@@ -44,23 +45,25 @@ document.addEventListener('DOMContentLoaded', function() {
 			if (event.error == 'service-not-allowed') {
 				showInfo('er_noservice');
 			}
+			console.log('ERROR: ' + event.error);
 		}
 
 		recognition.onend = function() {
 			recognition.stop();
+			console.log("STATUS: stopped");
 		}
+	}
 
-		function showInfo(state) {
-			if(state) {
-				for (var child = info.firstChild; child; child = child.nextSibling) {
-					if (child.style) {
-						child.style.display = child.id == state ? 'inline' : 'none';
-					}
+	function showInfo(state) {
+		if(state) {
+			for (var child = info.firstChild; child; child = child.nextSibling) {
+				if (child.style) {
+					child.style.display = child.id == state ? 'inline' : 'none';
 				}
-				info.style.visibility = 'visible';
-			} else {
-				info.style.visibility = 'hidden';
 			}
+			info.style.visibility = 'visible';
+		} else {
+			info.style.visibility = 'hidden';
 		}
 	}
 });
