@@ -9,3 +9,4 @@
 
 **20160915**:
 * Added more error events
+* Updated the icon
