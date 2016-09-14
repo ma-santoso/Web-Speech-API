@@ -6,3 +6,6 @@
 **20160914**:
 * Added mic icon
 * Added onerror properties
+
+**20160915**:
+* Added more error events
