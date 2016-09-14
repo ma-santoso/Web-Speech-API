@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
 	var result = '';
 	if (!('webkitSpeechRecognition' in window)){
-		upgrade();
+		showInfo('er_upgrade');
 	} else {
-		console.log('Browser up to date');
 		var recognition = new webkitSpeechRecognition();
 		recognition.continuous = false;
 		recognition.interimResults = false;
@@ -12,30 +11,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		button.onclick = function() {
 			recognition.start();
-			recognition.onstart = function() {
-				showInfo('info_active');
+		}
+
+		recognition.onstart = function() {
+			showInfo('info_active');
+		}
+
+		recognition.onresult = function(event) {
+			var text = event.results[0][0].transcript;
+			var result = document.getElementById('result');
+			console.log('RECOGNIZED TEXT: ' + text);
+			result.innerHTML = text;
+		}
+
+		recognition.onerror = function(event) {
+			console.log('ERROR: ' + event.error)
+			if (event.error == 'no-speech') {
+				showInfo('er_nospeech');
+			}
+			if (event.error == 'aborted') {
+				showInfo('er_aborted');
+			}
+			if (event.error == 'audio-capture') {
+				showInfo('er_nomic');
+			}
+			if (event.error == 'network') {
+				showInfo('er_network');
+			}
+			if (event.error == 'not-allowed') {
+				showInfo('er_notallowed');
+			}
+			if (event.error == 'service-not-allowed') {
+				showInfo('er_noservice');
 			}
 		}
 
 		recognition.onend = function() {
-			showInfo('info_start');
-			recognition.onresult = function(event) {
-				var text = event.results[0][0].transcript;
-				var result = document.getElementById('result');
-				console.log(text);
-				result.innerHTML = text;
-			}
-		}
-
-		recognition.onerror = function() {
-			if (event.error == 'no-speech') {
-				console.log('NO SPEECH');
-				showInfo('info_nospeech');
-			}
-			if (event.error == 'audio-capture') {
-				console.log('NO MIC');
-				showInfo('info_nomic');
-			}
+			recognition.stop();
 		}
 
 		function showInfo(state) {
