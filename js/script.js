@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
 			result.innerHTML = text;
 			showInfo('info_start');
 			console.log('RECOGNIZED TEXT: ' + text);
+			chrome.storage.local.set({output: text}, function() {
+				console.log('STATUS: output saved');
+			});
+			chrome.storage.local.get('output', function(data) {
+				console.log('OUTPUT: ' + data.output);
+			});
 		}
 
 		recognition.onerror = function(event) {
