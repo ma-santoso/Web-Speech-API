@@ -1,0 +1,21 @@
+{
+  "name": "Web Speech API",
+  "description": "Web Speech API Test",
+  "author": "M. A. Santoso",
+  "version": "0.1",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": ["js/background.js"]
+    }
+  },
+  "icons": { "16": "img/icon_16.png", "128": "img/icon_128.png" },
+  "permissions": [
+    "nativeMessaging", 
+    "notifications",
+    "fileSystem",
+    "storage",
+    "audio",
+    "audioCapture"
+  ]
+}
