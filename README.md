@@ -11,3 +11,6 @@
 * Added more error events
 * Updated the icon
 * Integrated into a chrome app
+
+**20160917**:
+* Implemented local storage
