@@ -57,7 +57,7 @@ h1 a:hover{
 
 #result{
 	display: block;
-    width: 700px;
+    width: 500px;
     height: 50px;
     margin: 0 auto;
     padding: 20px;
@@ -65,4 +65,13 @@ h1 a:hover{
     color: #999;
     border: 1px solid #ddd;
     border-radius: 2px;
+}
+
+#result p{
+	margin: 0;
+}
+
+#result p:nth-child(2) {
+    color: #36f;
+    font-weight: 600;
 }
