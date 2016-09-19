@@ -15,20 +15,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		recognition.onstart = function() {
 			showInfo('info_active');
-			console.log("STATUS: listening...");
+			console.log('STATUS: listening...');
 		}
 
 		recognition.onresult = function(event) {
-			var text = event.results[0][0].transcript;
+			var recognizedText = event.results[0][0].transcript;
 			var result = document.getElementById('result');
-			result.innerHTML = text;
+			//result.innerHTML = recognizedText;
 			showInfo('info_start');
-			chrome.storage.local.set({output: text}, function() {
+			chrome.storage.local.set({output: recognizedText}, function() {
 				console.log('STATUS: result saved');
 			});
 			chrome.storage.local.get('output', function(data) {
 				console.log('RESULT: ' + data.output);
 			});
+			execute(recognizedText);
 		}
 
 		recognition.onerror = function(event) {
@@ -55,8 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		recognition.onend = function() {
 			recognition.stop();
-			console.log("STATUS: stopped");
-			chrome.runtime.connectNative('terminal');
+			console.log('STATUS: stopped');
 		}
 	}
 
@@ -70,6 +70,36 @@ document.addEventListener('DOMContentLoaded', function() {
 			info.style.visibility = 'visible';
 		} else {
 			info.style.visibility = 'hidden';
+		}
+	}
+
+	function execute(text) {
+		var result = document.getElementById('result');
+		result.innerHTML = '<p>RECOGNIZED TEXT: ' + text + '</p>';
+		if(text === 'open Terminal') {
+			chrome.runtime.connectNative('terminal');
+			var p = document.createElement('p');
+			var i = document.createTextNode('STATUS: Opening terminal');
+			p.appendChild(i);
+			result.appendChild(p);
+			//console.log("STATUS: opening terminal");
+		}
+		if(text === 'what time is it') {
+			var date = new Date();
+			var hour = date.getHours();
+			var minute = date.getMinutes();
+			var period;
+			if (hour > 12) {
+				hour -= 12;
+				period = 'PM';
+			} else {
+				period = 'AM';
+			}
+			var p = document.createElement('p');
+			var i = document.createTextNode("STATUS: It's now " + hour + ":" + minute + " " + period);
+			p.appendChild(i);
+			result.appendChild(p);
+			//console.log("STATUS: it's now", hour + ":" + minute, period);
 		}
 	}
 });
