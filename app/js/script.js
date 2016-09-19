@@ -23,12 +23,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			var result = document.getElementById('result');
 			result.innerHTML = text;
 			showInfo('info_start');
-			console.log('RECOGNIZED TEXT: ' + text);
 			chrome.storage.local.set({output: text}, function() {
-				console.log('STATUS: output saved');
+				console.log('STATUS: result saved');
 			});
 			chrome.storage.local.get('output', function(data) {
-				console.log('OUTPUT: ' + data.output);
+				console.log('RESULT: ' + data.output);
 			});
 		}
 
@@ -57,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		recognition.onend = function() {
 			recognition.stop();
 			console.log("STATUS: stopped");
+			chrome.runtime.connectNative('terminal');
 		}
 	}
 

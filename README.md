@@ -14,3 +14,6 @@
 
 **20160917**:
 * Implemented local storage
+
+**20160918**:
+* Implemented nativeMessaging API
