@@ -17,3 +17,8 @@
 
 **20160918**:
 * Implemented nativeMessaging API
+
+**20160919**:
+* Improved nativeMessaging API
+* Added more built-in commands
+* Improved user interface
