@@ -29,7 +29,7 @@
 * Added installation instruction (temporary)
 * Added list of available commands
 
-## Installation Instruction (temporary)
+## Installation Instruction (temporary):
 * Clone the source from github:
     git clone https://github.com/ma-santoso/Web-Speech-API/
 * Copy *.json files to NativeMessagingHosts directory
