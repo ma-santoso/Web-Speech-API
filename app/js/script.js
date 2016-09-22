@@ -75,14 +75,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	function execute(text) {
 		var result = document.getElementById('result');
+		var p = document.createElement('p');
 		result.innerHTML = '<p>RECOGNIZED TEXT: ' + text + '</p>';
 		if(text === 'open Terminal') {
 			chrome.runtime.connectNative('terminal');
-			var p = document.createElement('p');
 			var i = document.createTextNode('STATUS: Opening terminal');
 			p.appendChild(i);
 			result.appendChild(p);
-			//console.log("STATUS: opening terminal");
+		}
+		if(text === 'open music') {
+			chrome.runtime.connectNative('music');
+			var i = document.createTextNode('STATUS: Opening Spotify');
+			p.appendChild(i);
+			result.appendChild(p);
+		}
+		if(text === 'open Libre office') {
+			chrome.runtime.connectNative('office');
+			var i = document.createTextNode('STATUS: Opening LibreOffice');
+			p.appendChild(i);
+			result.appendChild(p);
+		}
+		if(text === 'open file explorer') {
+			chrome.runtime.connectNative('file');
+			var i = document.createTextNode('STATUS: Opening File Explorer');
+			p.appendChild(i);
+			result.appendChild(p);
+		}
+		if(text === 'open image editor') {
+			chrome.runtime.connectNative('gimp');
+			var i = document.createTextNode('STATUS: Opening GIMP');
+			p.appendChild(i);
+			result.appendChild(p);
+		}
+		if(text === 'open text editor') {
+			chrome.runtime.connectNative('text');
+			var i = document.createTextNode('STATUS: Opening Text Editor');
+			p.appendChild(i);
+			result.appendChild(p);
 		}
 		if(text === 'what time is it') {
 			var date = new Date();
@@ -95,11 +124,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			} else {
 				period = 'AM';
 			}
-			var p = document.createElement('p');
 			var i = document.createTextNode("STATUS: It's now " + hour + ":" + minute + " " + period);
 			p.appendChild(i);
 			result.appendChild(p);
-			//console.log("STATUS: it's now", hour + ":" + minute, period);
 		}
 	}
 });
