@@ -1,12 +1,52 @@
+* {
+	font-family: 'Open Sans', sans-serif;
+}
+
+*:focus {
+	outline: 0;
+}
+
 body{
 	width: 100%;
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	font-family: 'Open Sans', sans-serif;
 }
 
-h1{
+#menuIcons {
+	display: block;
+	width: 540px;
+	height: 24px;
+	top: 0;
+	left: 0;
+	padding: 5px 0;
+	margin: 0 auto;
+	margin-bottom: -34px;
+}
+
+.menu {
+	display: block;
+	height: 24px;
+	width: 24px;
+	background-image: url(../img/icon-sprite.png);
+}
+
+.menu:hover {
+	cursor: pointer;
+	background-position-y: -24px;
+}
+
+.menu.help {
+	float: left;
+	background-position-x: 0;
+}
+
+.menu.pref {
+	float: right;
+	background-position-x: -24px;
+}
+
+h1 {
 	display: block;
 	text-align: center;
 	font-weight: 300;
@@ -15,7 +55,7 @@ h1{
 	margin: 30px 0;
 }
 
-h1 a{
+h1 a {
 	font-weight: 500;
 	text-decoration: none;
 	color: #333;
@@ -23,6 +63,32 @@ h1 a{
 
 h1 a:hover{
 	color: #39f;
+}
+
+h5 {
+	font-size: 14px;
+	font-weight: 400;
+	margin: 20px 0 10px;
+}
+
+h6 {
+	margin: 10px 0 10px 20px;
+}
+
+h6, select, option, input {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+select {
+    margin: 0 20px;
+    padding-left: 5px;
+    display: block;
+    width: 150px;
+    height: 24px;
+    background: #ddd;
+    border: 0;
+    border-radius: 2px;
 }
 
 #info{
@@ -33,7 +99,7 @@ h1 a:hover{
 }
 
 .info_error{
-	color: #f63;
+	color: #f66;
 }
 
 #button{
@@ -43,27 +109,206 @@ h1 a:hover{
 	height: 300px;
 	border-radius: 100%;
 	border: 1px solid #ddd;
-	background: url("../img/icon.png") no-repeat center center;
-	background-size: 50%;
+	background: url("../img/icon_128.png") no-repeat center center;
+	background-color: #fff;
+	transition: background-color .25s;
 }
 
 #button:hover{
 	background-color: #eee;
 	cursor: pointer;
+	transition: background-color .25s;
 }
 
 #button:active{
 	background-color: #ddd;
+	transition: background-color .25s;
+}
+
+#button:before {
+	content: "";
+	width: 300px;
+	height: 300px;
+	display: block;
+	background-color: #f66;
+	position: absolute;
+	border-radius: 50%;
+	z-index: -1;
 }
 
 #result{
 	display: block;
-    width: 700px;
-    height: 50px;
-    margin: 0 auto;
-    padding: 20px;
-    font-size: 1em;
-    color: #999;
-    border: 1px solid #ddd;
+	width: 500px;
+	height: 50px;
+	margin: 0 auto;
+	padding: 20px;
+	font-size: 1em;
+	color: #999;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+}
+
+#result p{
+	margin: 0;
+}
+
+#result p:nth-child(2) {
+	color: #39f;
+	font-weight: 600;
+}
+
+.listening:before{
+	animation-name: listening;
+	animation-duration: 2s;
+	animation-delay: .25s;
+	animation-iteration-count: infinite;
+	animation-timing-function: cubic-bezier(0, 0.5, 0.25, 1.5);
+}
+
+@keyframes listening {
+	from {
+		opacity: .75;
+		transform: scale(1,1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(1.75,1.75);
+	}
+}
+
+#windowContainer {
+	display: block;
+	width: 100%;
+	position: absolute;
+	top: 100px;
+}
+
+.window {
+	display: block;
+	margin: 0 auto;
+	background-color: #fff;
+	box-shadow: 0 0 20px rgba(0,0,0,.5);
+	padding: 0 30px;
+	transition: display 1s;
+}
+
+.window.pref {
+	width: 440px;
+	height: 500px;
+	display: none;
+	position: relative;
+    top: -30px;
+}
+
+.window.help {
+	width: 440px;
+	height: 300px;
+	display: none;
+	position: relative;
+    top: 70px;
+}
+
+.wrapper {
+	display: block;
+	width: 100%;
+	height: 70px;
+}
+
+.title h1 {
+	font-weight: 400;
+	margin: 0;
+	line-height: 70px;
+}
+
+.content {
+	width: 100%;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd
+}
+
+.help.window .content {
+	height: 160px;
+}
+
+.pref.window .content {
+	height: 360px;
+	overflow-y: scroll;
+}
+
+.wrapper.buttons {
+    display: block;
+    height: auto;
+    width: auto;
+    position: relative;
+    top: 20px;
+    right: 0;
+}
+
+.window button {
+    background: #ddd;
     border-radius: 2px;
+    border: 0;
+    line-height: 30px;
+    padding: 0 10px;
+    margin-left: 10px;
+    float: right;
+	transition: background .5s;
+}
+
+.window a {
+    text-decoration: none;
+    color: #39f;
+    border-bottom: 2px solid rgba(51, 153, 255,0);
+	transition: border-bottom 1s;
+}
+
+.window a:hover {
+    border-bottom: 2px solid rgba(51, 153, 255,1);
+	transition: border-bottom .5s;
+}
+
+.input-container {
+    display: inline-block;
+    position: relative;
+    right: 10px;
+    top: 5px;
+    float: right;
+}
+
+.app h6 {
+    display: inline-block;
+}
+
+button#addApp {
+    float: none;
+    margin: 10px 20px 20px;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+input[type="text"] {
+    width: 150px;
+	line-height: 18px;
+	padding-left: 5px;
+}
+
+input[type="button"], input[type="submit"] {
+	background: #ddd;
+	border: 0;
+	border-radius: 2px;
+	line-height: 22px;
+	margin-left: 5px;
+	transition: background .25s;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover, .window button:hover {
+	cursor: pointer;
+	background: #eee;
+	transition: background .25s;
+}
+
+input[type="button"]:active, input[type="submit"]:active, .window button:active {
+	background: #999;
+	transition: background .25s;
 }

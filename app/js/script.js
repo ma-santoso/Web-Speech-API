@@ -1,28 +1,53 @@
 document.addEventListener('DOMContentLoaded', function() {
-	var result = '';
+	helpMenu.onclick = function() {
+		prefWindow.style.display = 'none';
+		helpWindow.style.display = 'block';
+	}
+
+	prefMenu.onclick = function() {
+		helpWindow.style.display = 'none';
+		prefWindow.style.display = 'block';
+	}
+
+	helpClose.onclick = function() {
+		helpWindow.style.display = 'none';
+	}
+
+	prefClose.onclick = function() {
+		prefWindow.style.display = 'none';
+	}
+
 	if (!('webkitSpeechRecognition' in window)){
 		showInfo('er_upgrade');
 	} else {
 		var recognition = new webkitSpeechRecognition();
+		var listening = false;
 		recognition.continuous = false;
 		recognition.interimResults = false;
 		recognition.maxAlternatives = 1;
 		showInfo('info_start');
 
 		button.onclick = function() {
-			recognition.start();
+			if (listening === false) {
+				recognition.start();
+			} else {
+				recognition.abort();
+			}
 		}
 
 		recognition.onstart = function() {
 			showInfo('info_active');
+			button.className = 'listening';
+			listening = true;
 			console.log('STATUS: listening...');
 		}
 
 		recognition.onresult = function(event) {
 			var recognizedText = event.results[0][0].transcript;
 			var result = document.getElementById('result');
-			//result.innerHTML = recognizedText;
+			listening = false;
 			showInfo('info_start');
+			button.className = '';
 			chrome.storage.local.set({output: recognizedText}, function() {
 				console.log('STATUS: result saved');
 			});
@@ -33,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 		recognition.onerror = function(event) {
+			button.className = '';
+			listening = false;
 			if (event.error == 'no-speech') {
 				showInfo('er_nospeech');
 			}
@@ -56,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		recognition.onend = function() {
 			recognition.stop();
+			listening = false;
 			console.log('STATUS: stopped');
 		}
 	}
