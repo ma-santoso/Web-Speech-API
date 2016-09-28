@@ -29,6 +29,13 @@
 * Added installation instruction (temporary)
 * Added list of available commands
 
+**20160928**:
+* Revamped the UI
+* Added a function
+* Added some animations
+* Added a preference menu (UI only)
+* Added an about menu
+
 ## Installation Instruction (temporary):
 * Clone the source from github:
     git clone https://github.com/ma-santoso/Web-Speech-API/
