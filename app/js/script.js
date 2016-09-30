@@ -187,7 +187,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		window.open('https://github.com/ma-santoso/Web-Speech-API/');
 	}
 
-	helpRef.onclick = function() {
-		window.open('https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html');
+	var ref = document.getElementsByClassName('w3cRef');
+	for (var i = 0; i < 2; i++) {
+		ref[i].onclick = function() {
+			window.open('https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html');
+		}
 	}
 });
