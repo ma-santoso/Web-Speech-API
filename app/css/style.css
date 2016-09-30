@@ -17,8 +17,6 @@ body{
 	display: block;
 	width: 540px;
 	height: 24px;
-	position: relative;
-	top: 30px;
 	padding: 5px 0;
 	margin: 0 auto;
 	margin-bottom: -34px;
@@ -26,6 +24,8 @@ body{
 
 .menu {
 	display: block;
+	position: relative;
+	top: 30px;
 	height: 24px;
 	width: 24px;
 	background-image: url(../img/icon-sprite.png);
