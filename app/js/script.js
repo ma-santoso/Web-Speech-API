@@ -1,22 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-	helpMenu.onclick = function() {
-		prefWindow.style.display = 'none';
-		helpWindow.style.display = 'block';
-	}
-
-	prefMenu.onclick = function() {
-		helpWindow.style.display = 'none';
-		prefWindow.style.display = 'block';
-	}
-
-	helpClose.onclick = function() {
-		helpWindow.style.display = 'none';
-	}
-
-	prefClose.onclick = function() {
-		prefWindow.style.display = 'none';
-	}
-
 	if (!('webkitSpeechRecognition' in window)){
 		showInfo('er_upgrade');
 	} else {
@@ -89,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function showInfo(state) {
-		if(state) {
+		if (state) {
 			for (var child = info.firstChild; child; child = child.nextSibling) {
 				if (child.style) {
 					child.style.display = child.id == state ? 'inline' : 'none';
@@ -105,43 +87,43 @@ document.addEventListener('DOMContentLoaded', function() {
 		var result = document.getElementById('result');
 		var p = document.createElement('p');
 		result.innerHTML = '<p>RECOGNIZED TEXT: ' + text + '</p>';
-		if(text === 'open Terminal') {
+		if (text === 'open Terminal') {
 			chrome.runtime.connectNative('terminal');
 			var i = document.createTextNode('STATUS: Opening terminal');
 			p.appendChild(i);
 			result.appendChild(p);
 		}
-		if(text === 'open music') {
+		if (text === 'open music') {
 			chrome.runtime.connectNative('music');
 			var i = document.createTextNode('STATUS: Opening Spotify');
 			p.appendChild(i);
 			result.appendChild(p);
 		}
-		if(text === 'open Libre office') {
+		if (text === 'open Libre office') {
 			chrome.runtime.connectNative('office');
 			var i = document.createTextNode('STATUS: Opening LibreOffice');
 			p.appendChild(i);
 			result.appendChild(p);
 		}
-		if(text === 'open file explorer') {
+		if (text === 'open file explorer') {
 			chrome.runtime.connectNative('file');
 			var i = document.createTextNode('STATUS: Opening File Explorer');
 			p.appendChild(i);
 			result.appendChild(p);
 		}
-		if(text === 'open image editor') {
+		if (text === 'open image editor') {
 			chrome.runtime.connectNative('gimp');
 			var i = document.createTextNode('STATUS: Opening GIMP');
 			p.appendChild(i);
 			result.appendChild(p);
 		}
-		if(text === 'open text editor') {
+		if (text === 'open text editor') {
 			chrome.runtime.connectNative('text');
 			var i = document.createTextNode('STATUS: Opening Text Editor');
 			p.appendChild(i);
 			result.appendChild(p);
 		}
-		if(text === 'what time is it') {
+		if (text === 'what time is it') {
 			var date = new Date();
 			var hour = date.getHours();
 			var minute = date.getMinutes();
@@ -156,5 +138,56 @@ document.addEventListener('DOMContentLoaded', function() {
 			p.appendChild(i);
 			result.appendChild(p);
 		}
+	}
+
+	helpMenu.onclick = function() {
+		openModal('help');
+	}
+
+	prefMenu.onclick = function() {
+		openModal('pref');
+	}
+
+	helpClose.onclick = function() {
+		closeContainer();
+	}
+
+	prefClose.onclick = function() {
+		closeContainer();
+	}
+
+	function openModal(modal) {
+		openContainer();
+		closeModal();
+		if(modal == 'help') {
+			helpModal.style.display = 'block';
+		} else {
+			prefModal.style.display = 'block';
+		}
+	}
+
+	function closeModal() {
+		helpModal.style.display = 'none';
+		prefModal.style.display = 'none';
+	}
+
+	function openContainer() {
+		modalContainer.style.display = 'block';
+	}
+
+	function closeContainer() {
+		modalContainer.style.display = 'none';
+	}
+
+	helpMail.onclick = function() {
+		window.open('mailto:marsa.agung.s@mail.ugm.ac.id');
+	}
+
+	helpGithub.onclick = function() {
+		window.open('https://github.com/ma-santoso/Web-Speech-API/');
+	}
+
+	helpRef.onclick = function() {
+		window.open('https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html');
 	}
 });
