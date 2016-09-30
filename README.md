@@ -36,6 +36,12 @@
 * Added a preference menu (UI only)
 * Added an about menu
 
+**20160930**:
+* Slight UI changes
+* Change a few app behaviours
+* Redefined some element ids
+* Fixed some links
+
 ## Installation Instruction (temporary):
 * Clone the source from github:
     git clone https://github.com/ma-santoso/Web-Speech-API/
