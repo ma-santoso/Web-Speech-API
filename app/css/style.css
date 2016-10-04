@@ -152,11 +152,7 @@ select {
 	margin: 0;
 }
 
-<<<<<<< HEAD
 #result p:nth-child(4) {
-=======
-#result p:nth-child(2) {
->>>>>>> 4484bc67a65bdc61b847b6d9bc10c04b83c33cc5
 	color: #39f;
 	font-weight: 600;
 }
@@ -334,8 +330,4 @@ input[type="button"]:hover, input[type="submit"]:hover, .modal button:hover {
 input[type="button"]:active, input[type="submit"]:active, .modal button:active {
 	background: #999;
 	transition: background .25s;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4484bc67a65bdc61b847b6d9bc10c04b83c33cc5

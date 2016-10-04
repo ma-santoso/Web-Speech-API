@@ -11,7 +11,9 @@
 		<div class="menu help" id="helpMenu"></div>
 		<div class="menu pref" id="prefMenu"></div>
 	</div>
-	<h1><a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html">Web Speech API</a> Test</h1>
+	<div id="title">
+		<h1><a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html" target="_blank">Web Speech API</a> Test</h1>
+	</div>
 	<div id=info>
 		<p id=info_start>Click on the mic icon below to initiate</p>
 		<p id=info_active>Listening...</p>
@@ -24,21 +26,21 @@
 		<p class="info_error" id=er_upgrade>Browser not supported</p>
 	</div>
 	<div id="button"></div>
-	<div id="result">Result will be displayed here</div>
-	<div id="windowContainer">
-		<div class="window help" id="helpWindow">
+	<div id="result"><p>Result will be displayed here</p></div>
+	<div id="modalContainer">
+		<div class="modal help" id="helpModal">
 			<div class="wrapper title"><h1>About</h1></div>
 			<div class="content">
 				<h5>This app was created by Marsa Agung Santoso</h5>
-				<h6>Contact me at <a href="mailto:marsa.agung.s@mail.ugm.ac.id">marsa.agung.s@mail.ugm.ac.id</a></h6>
-				<h6>See the source code at <a href="http://github.com/ma-santoso/Web-Speech-API">http://github.com/ma-santoso/Web-Speech-API</a></h6>
-				<h6>Learn more about Web Speech API at the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html">W3 Refence Page</a></h6>
+				<h6>Contact me at <a href="mailto:marsa.agung.s@mail.ugm.ac.id" target="_blank">marsa.agung.s@mail.ugm.ac.id</a></h6>
+				<h6>See the source code at <a href="https://github.com/ma-santoso/Web-Speech-API/" target="_blank">https://github.com/ma-santoso/Web-Speech-API/</a></h6>
+				<h6>Learn more about Web Speech API at the <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html" target="_blank">W3 Refence Page</a></h6>
 			</div>
 			<div class="wrapper buttons">
 				<button class="close" id="helpClose">Close</button>
 			</div>
 		</div>
-		<div class="window pref" id="prefWindow">
+		<div class="modal pref" id="prefModal">
 			<div class="wrapper title"><h1>Preferences</h1></div>
 			<div class="content">
 				<h5>Language</h5>

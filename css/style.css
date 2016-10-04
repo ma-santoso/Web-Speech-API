@@ -17,8 +17,6 @@ body{
 	display: block;
 	width: 540px;
 	height: 24px;
-	top: 0;
-	left: 0;
 	padding: 5px 0;
 	margin: 0 auto;
 	margin-bottom: -34px;
@@ -26,6 +24,8 @@ body{
 
 .menu {
 	display: block;
+	position: relative;
+	top: 30px;
 	height: 24px;
 	width: 24px;
 	background-image: url(../img/icon-sprite.png);
@@ -152,7 +152,7 @@ select {
 	margin: 0;
 }
 
-#result p:nth-child(2) {
+#result p:nth-child(4) {
 	color: #39f;
 	font-weight: 600;
 }
@@ -176,36 +176,34 @@ select {
 	}
 }
 
-#windowContainer {
-	display: block;
+#modalContainer {
 	width: 100%;
+	height: 100%;
 	position: absolute;
-	top: 100px;
+	top: 0;
+	background-color: rgba(0,0,0,.5);
+	display: none;
+	animation: fadeIn .5s;
 }
 
-.window {
-	display: block;
+.modal {
+	display: none;
+	width: 440px;
 	margin: 0 auto;
 	background-color: #fff;
 	box-shadow: 0 0 20px rgba(0,0,0,.5);
 	padding: 0 30px;
-	transition: display 1s;
-}
-
-.window.pref {
-	width: 440px;
-	height: 500px;
-	display: none;
-	position: relative;
-    top: -30px;
-}
-
-.window.help {
-	width: 440px;
-	height: 300px;
-	display: none;
 	position: relative;
     top: 70px;
+	animation: slideDown .5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.modal.pref {
+	height: 500px;
+}
+
+.modal.help {
+	height: 300px;
 }
 
 .wrapper {
@@ -226,11 +224,11 @@ select {
 	border-bottom: 1px solid #ddd
 }
 
-.help.window .content {
+.help.modal .content {
 	height: 160px;
 }
 
-.pref.window .content {
+.pref.modal .content {
 	height: 360px;
 	overflow-y: scroll;
 }
@@ -244,7 +242,7 @@ select {
     right: 0;
 }
 
-.window button {
+.modal button {
     background: #ddd;
     border-radius: 2px;
     border: 0;
@@ -255,16 +253,37 @@ select {
 	transition: background .5s;
 }
 
-.window a {
+.modal a {
     text-decoration: none;
     color: #39f;
+    font-weight: 400;
     border-bottom: 2px solid rgba(51, 153, 255,0);
 	transition: border-bottom 1s;
 }
 
-.window a:hover {
+.modal a:hover {
     border-bottom: 2px solid rgba(51, 153, 255,1);
 	transition: border-bottom .5s;
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		top: -100px;
+	}
+	to {
+		opacity: 1;
+		top: 70px;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 .input-container {
@@ -302,13 +321,13 @@ input[type="button"], input[type="submit"] {
 	transition: background .25s;
 }
 
-input[type="button"]:hover, input[type="submit"]:hover, .window button:hover {
+input[type="button"]:hover, input[type="submit"]:hover, .modal button:hover {
 	cursor: pointer;
 	background: #eee;
 	transition: background .25s;
 }
 
-input[type="button"]:active, input[type="submit"]:active, .window button:active {
+input[type="button"]:active, input[type="submit"]:active, .modal button:active {
 	background: #999;
 	transition: background .25s;
 }
