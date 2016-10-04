@@ -42,6 +42,14 @@
 * Redefined some element ids
 * Fixed some links
 
+**20161003**:
+* Implemented a simple parser, allowing a more fluid commands
+* Cleaned/optimized some js codes
+
+**20161004**:
+* Slightly modified the parser function
+* Fixed some links
+
 ## Installation Instruction (temporary):
 * Clone the source from github:
     git clone https://github.com/ma-santoso/Web-Speech-API/
