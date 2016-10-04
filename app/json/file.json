@@ -1,0 +1,9 @@
+{
+  "name": "file",
+  "description": "launch file explorer",
+  "path": "/opt/lampp/htdocs/Web-Speech-API/app/js/file.sh",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://ochmeefafogddhdcgbpoadmfgpoalene/"
+  ]
+}

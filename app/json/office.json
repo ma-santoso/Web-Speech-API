@@ -1,0 +1,9 @@
+{
+  "name": "office",
+  "description": "launch LibreOffice",
+  "path": "/opt/lampp/htdocs/Web-Speech-API/app/sh/office.sh",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://ochmeefafogddhdcgbpoadmfgpoalene/"
+  ]
+}

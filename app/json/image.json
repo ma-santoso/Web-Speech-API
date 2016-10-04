@@ -1,0 +1,9 @@
+{
+  "name": "image",
+  "description": "launch an image editor",
+  "path": "/opt/lampp/htdocs/Web-Speech-API/app/sh/image.sh",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://ochmeefafogddhdcgbpoadmfgpoalene/"
+  ]
+}

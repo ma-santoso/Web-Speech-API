@@ -1,0 +1,9 @@
+{
+  "name": "text",
+  "description": "launch text editor",
+  "path": "/opt/lampp/htdocs/Web-Speech-API/app/sh/text.sh",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://ochmeefafogddhdcgbpoadmfgpoalene/"
+  ]
+}
