@@ -49,6 +49,8 @@
 **20161004**:
 * Slightly modified the parser function
 * Fixed some links
+* Modified json files
+* Reorganized project files
 
 ## Installation Instruction (temporary):
 * Clone the source from github:
@@ -61,15 +63,15 @@
 * Load the /Web-Speech-API/app folder in chromium extension via 'Load unpacked extension..."
 * Copy the extension id
 * Edit /app/terminal.json and paste the "chrome-extension" property with the id you just copied then save
-* Launch the app via 
+* Launch the app by mentioning the trigger word (open,launch, run, execute), followed by one of the available apps in a sentence
 
-## Current available commands:
-* open terminal
-* open libre office
-* open file explorer
-* open image editor
-* open text editor
-* what time is it
+## Current available apps:
+* file manager = nemo
+* image editor = gimp
+* music player = spotify
+* office software = libre office
+* terminal emulator = termite
+* text editor = nano
 
 ## To-do List:
 * ~~Making a barebone~~
