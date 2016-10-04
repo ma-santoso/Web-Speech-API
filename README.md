@@ -72,7 +72,8 @@
 * what time is it
 
 ## To-do List:
-* ~~Making a barebones~~
+* ~~Making a barebone~~
+* ~~Implementing the API~~
 * ~~Finishing the UI~~
 * ~~Adding a parser~~
 * Creating a native host
