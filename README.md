@@ -70,3 +70,11 @@
 * open image editor
 * open text editor
 * what time is it
+
+## To-do List:
+* ~~Making a barebones~~
+* ~~Finishing the UI~~
+* ~~Adding a parser~~
+* Creating a native host
+* Linking app with the native host
+* Adding a preferences option
