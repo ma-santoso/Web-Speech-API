@@ -1,9 +1,0 @@
-{
-  "name": "music",
-  "description": "launch music player",
-  "path": "/opt/lampp/htdocs/Web-Speech-API/app/music.sh",
-  "type": "stdio",
-  "allowed_origins": [
-    "chrome-extension://ochmeefafogddhdcgbpoadmfgpoalene/"
-  ]
-}

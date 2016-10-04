@@ -4,6 +4,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	} else {
 		var recognition = new webkitSpeechRecognition();
 		var listening = false;
+<<<<<<< HEAD
+		var appList = ['file','image','music','office','terminal','text'];
+		var trigger = ['open','run','execute','launch'];
+		var article = ['a','an','the'];
+		var adjunct = [undefined,'please','for'];
+		var result = document.getElementById('result');
+
+=======
+>>>>>>> 4484bc67a65bdc61b847b6d9bc10c04b83c33cc5
 		recognition.continuous = false;
 		recognition.interimResults = false;
 		recognition.maxAlternatives = 1;
@@ -26,6 +35,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		recognition.onresult = function(event) {
 			var recognizedText = event.results[0][0].transcript;
+<<<<<<< HEAD
+			var word = recognizedText.split(' ');
+
+			listening = false;
+			showInfo('info_start');
+			button.className = '';
+			
+			clearResult();
+			console.log('RECOGNIZED TEXT: ', recognizedText)
+			displayResult('RECOGNIZED TEXT: ', recognizedText);
+			parse(word);
+=======
 			var result = document.getElementById('result');
 			listening = false;
 			showInfo('info_start');
@@ -37,11 +58,32 @@ document.addEventListener('DOMContentLoaded', function() {
 				console.log('RESULT: ' + data.output);
 			});
 			execute(recognizedText);
+>>>>>>> 4484bc67a65bdc61b847b6d9bc10c04b83c33cc5
 		}
 
 		recognition.onerror = function(event) {
 			button.className = '';
 			listening = false;
+<<<<<<< HEAD
+			switch (event.error) {
+				case 'no-speech':
+					showInfo('er_nospeech');
+					break;
+				case 'aborted':
+					showInfo('er_aborted');
+					break;
+				case 'audio-capture':
+					showInfo('er_nomic');
+					break;
+				case 'network':
+					showInfo('er_network');
+					break;
+				case 'not-allowed':
+					showInfo('er_notallowed');
+					break;
+				case 'service-not-allowed':
+					showInfo('er_noservice');
+=======
 			if (event.error == 'no-speech') {
 				showInfo('er_nospeech');
 			}
@@ -59,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 			if (event.error == 'service-not-allowed') {
 				showInfo('er_noservice');
+>>>>>>> 4484bc67a65bdc61b847b6d9bc10c04b83c33cc5
 			}
 			console.log('ERROR: ' + event.error);
 		}
@@ -83,6 +126,128 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
+<<<<<<< HEAD
+	function parse(text) {
+		var word = new Object();
+		var a, b, x;
+		
+		for (var i = 0; i < text.length; i++) {
+			for (var j = 0; j < trigger.length; j++) {
+				if (text[i] == trigger[j]) {
+					x = i;
+					for (var k = 0; k < article.length; k++) {
+						if (text[x+1] == article[k]) {
+							a = x+2;
+							break;
+						} else {
+							a = x+1;
+						}
+					}
+					for (var l = 0; l < adjunct.length; l++) {
+						if (text[a+1] == adjunct[l]) {
+							b = a;
+							break;
+						} else {
+							b = a+1;
+						}
+					}
+				}
+			}
+		}
+		word.trigger = text[x];
+		console.log('x:',x,'\ttrigger:',word.trigger);
+		if (a != undefined){
+			word.alias = text[a];
+			if (a != b) {
+				word.parsed = word.alias + ' ' + text[b];
+			}
+			else {
+				word.parsed = word.alias;
+			}
+			console.log('a:',a,'\talias:',word.alias);
+			console.log('b:',b,'\tparsed:',word.parsed);
+			execute(word.alias);
+			displayResult('PARSED TEXT: ', word.parsed);
+			displayResult('STATUS: Launching ', word.parsed);
+		}
+	} 
+
+	function clearResult() {
+		var p = result.children;
+		while (p.length > 1) {
+			p[1].parentNode.removeChild(p[1]);
+		}
+	}
+
+	function displayResult(name, text) {
+		var p = document.createElement('p');
+		var i = document.createTextNode(name + text);
+		result.children[0].style.display = 'none';
+		p.appendChild(i);
+		result.appendChild(p);
+	}
+
+	function execute(app) {
+		for (var i = 0; i < appList.length; i++) {
+			if (app.toLowerCase() == appList[i]) {
+				chrome.runtime.connectNative(app.toLowerCase());
+				console.log('Launching', app);
+			}
+		}
+	}
+
+	helpMenu.onclick = function() {
+		openModal('help');
+	}
+
+	prefMenu.onclick = function() {
+		openModal('pref');
+	}
+
+	helpClose.onclick = function() {
+		closeContainer();
+	}
+
+	prefClose.onclick = function() {
+		closeContainer();
+	}
+
+	function openModal(modal) {
+		openContainer();
+		closeModal();
+		if(modal == 'help') {
+			helpModal.style.display = 'block';
+		} else {
+			prefModal.style.display = 'block';
+		}
+	}
+
+	function closeModal() {
+		helpModal.style.display = 'none';
+		prefModal.style.display = 'none';
+	}
+
+	function openContainer() {
+		modalContainer.style.display = 'block';
+	}
+
+	function closeContainer() {
+		modalContainer.style.display = 'none';
+	}
+
+	helpMail.onclick = function() {
+		window.open('mailto:marsa.agung.s@mail.ugm.ac.id');
+	}
+
+	helpGithub.onclick = function() {
+		window.open('https://github.com/ma-santoso/Web-Speech-API/');
+	}
+
+	var ref = document.getElementsByClassName('w3cRef');
+	for (var i = 0; i < 2; i++) {
+		ref[i].onclick = function() {
+			window.open('https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html');
+=======
 	function execute(text) {
 		var result = document.getElementById('result');
 		var p = document.createElement('p');
@@ -137,6 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			var i = document.createTextNode("STATUS: It's now " + hour + ":" + minute + " " + period);
 			p.appendChild(i);
 			result.appendChild(p);
+>>>>>>> 4484bc67a65bdc61b847b6d9bc10c04b83c33cc5
 		}
 	}
 
