@@ -53,6 +53,8 @@
 * Reorganized project files
 
 **20161008**:
+* Removed all webpage files
+* Created an alpha branch and made it a default branch
 * Added a working native host (written in c++)
 * Changed behavior of how apps are launched
 * Removed all the old temporary hosts (*sh files)
@@ -65,11 +67,11 @@
 
 ## Installation Instruction (temporary):
 * Clone the source from github:
-    git clone https://github.com/ma-santoso/Web-Speech-API/
+    `git clone https://github.com/ma-santoso/Web-Speech-API/`
 * Copy message.json to NativeMessagingHosts directory
-    cp /Web-Speech-API/app/json/message.json ~/.config/chromium/NativeMessagingHosts/
+    `cp /Web-Speech-API/json/message.json ~/.config/chromium/NativeMessagingHosts/`
 * Add permission to allow execution of the message file
-    chmod +x /Web-Speech-API/app/message
+    `chmod +x /Web-Speech-API/message`
 * Load the /Web-Speech-API/app folder in chromium extension via 'Load unpacked extension..."
 * Copy the extension id
 * Edit message.json and paste the "chrome-extension" property with the id you just copied then save
