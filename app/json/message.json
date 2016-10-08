@@ -1,0 +1,9 @@
+{
+  "name": "message",
+  "description": "nativeMessaging host",
+  "path": "/opt/lampp/htdocs/Web-Speech-API/app/message",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://ochmeefafogddhdcgbpoadmfgpoalene/"
+  ]
+}

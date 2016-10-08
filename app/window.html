@@ -24,8 +24,9 @@
 		<p class="info_error" id=er_notallowed>Speech input was not allowed</p>
 		<p class="info_error" id=er_noservice>Speech service is not running</p>
 		<p class="info_error" id=er_upgrade>Browser not supported</p>
+		<p class="info_error" id=er_noapp>No app registered with that name</p>
 	</div>
-	<div id="button"></div>
+	<div id="micButton"></div>
 	<div id="result"><p>Result will be displayed here</p></div>
 	<div id="modalContainer">
 		<div class="modal help" id="helpModal">
@@ -51,59 +52,24 @@
 				</select>
 				<h5>Default Apps</h5>
 				<h6>Choose apps to launch via voice commands</h6>
-				<div class="app entry">
-					<h6>File Manager:</h6>
-					<div class="input-container">
-						<input type="text" name="file" value="nemo">
-						<input type="submit" value="Save">
-						<input type="button" value="Remove">
-					</div>
-				</div>
-				<div class="app entry">
-					<h6>Image Editor:</h6>
-					<div class="input-container">
-						<input type="text" name="file" value="gimp">
-						<input type="submit" value="Save">
-						<input type="button" value="Remove">
-					</div>
-				</div>
-				<div class="app entry">
-					<h6>Music Player:</h6>
-					<div class="input-container">
-						<input type="text" name="file" value="spotify">
-						<input type="submit" value="Save">
-						<input type="button" value="Remove">
-					</div>
-				</div>
-				<div class="app entry">
-					<h6>Office Software:</h6>
-					<div class="input-container">
-						<input type="text" name="file" value="libreoffice">
-						<input type="submit" value="Save">
-						<input type="button" value="Remove">
-					</div>
-				</div>
-				<div class="app entry">
-					<h6>Terminal Emulator:</h6>
-					<div class="input-container">
-						<input type="text" name="file" value="termite">
-						<input type="submit" value="Save">
-						<input type="button" value="Remove">
-					</div>
-				</div>
-				<div class="app entry">
-					<h6>Text Editor:</h6>
-					<div class="input-container">
-						<input type="text" name="file" value="pluma">
-						<input type="submit" value="Save">
-						<input type="button" value="Remove">
-					</div>
-				</div>
-				<button id="addApp">Add an app</button>
+				<div id="entryContainer"></div>
 			</div>
 			<div class="wrapper buttons">
+				<button class="addApp" id="addApp">Add an app</button>
 				<button class="close" id="prefClose">Close</button>
-				<button class="save">Save Preferences</button>
+				<button class="save" id="prefSave">Save Preferences</button>
+			</div>
+		</div>
+		<div id="smallModalContainer">
+			<div class="small-modal modal prompt" id="promptModal">
+				<div class="content">
+					<div class="title"><h4>Enter the App Name</h4></div>
+					<div class="input">
+						<input type="text" name="" value="" id="inputAppName">
+						<input type="button" value="Save" class="save" id="promptSave">
+						<input type="button" value="Cancel" class="cancel" id="promptCancel">
+					</div>			
+				</div>
 			</div>
 		</div>
 	</div>

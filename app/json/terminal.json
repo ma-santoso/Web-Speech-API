@@ -1,9 +1,0 @@
-{
-  "name": "terminal",
-  "description": "launch terminal",
-  "path": "/opt/lampp/htdocs/Web-Speech-API/app/sh/terminal.sh",
-  "type": "stdio",
-  "allowed_origins": [
-    "chrome-extension://ochmeefafogddhdcgbpoadmfgpoalene/"
-  ]
-}
