@@ -52,24 +52,34 @@
 * Modified json files
 * Reorganized project files
 
+**20161008**:
+* Added a working native host (written in c++)
+* Changed behavior of how apps are launched
+* Removed all the old temporary hosts (*sh files)
+* Replaced the preference UI
+* Added a functional preference menu to register, change, or remove apps
+* Associating a *.json files for storing preference data
+* Replaced some html ids and classes
+* Added an error message
+* Added a lot of comments in the *.js and *.cpp files
+
 ## Installation Instruction (temporary):
 * Clone the source from github:
     git clone https://github.com/ma-santoso/Web-Speech-API/
-* Copy *.json files to NativeMessagingHosts directory
-    cp /Web-Speech-API/app/*.json ~/.config/chromium/NativeMessagingHosts/
-* Add permission to allow execution of the *.sh files
-    chmod +x /Web-Speech-API/app/*.sh
-* Edit the *.sh and *json file if necessary, to suit your needs
+* Copy message.json to NativeMessagingHosts directory
+    cp /Web-Speech-API/app/json/message.json ~/.config/chromium/NativeMessagingHosts/
+* Add permission to allow execution of the message file
+    chmod +x /Web-Speech-API/app/message
 * Load the /Web-Speech-API/app folder in chromium extension via 'Load unpacked extension..."
 * Copy the extension id
-* Edit /app/terminal.json and paste the "chrome-extension" property with the id you just copied then save
+* Edit message.json and paste the "chrome-extension" property with the id you just copied then save
 * Launch the app by mentioning the trigger word (open,launch, run, execute), followed by one of the available apps in a sentence
 
-## Current available apps:
+## Default available apps:
 * file manager = nemo
 * image editor = gimp
 * music player = spotify
-* office software = libre office
+* office software = libreoffice
 * terminal emulator = termite
 * text editor = nano
 
@@ -78,6 +88,8 @@
 * ~~Implementing the API~~
 * ~~Finishing the UI~~
 * ~~Adding a parser~~
-* Creating a native host
-* Linking app with the native host
-* Adding a preferences option
+* ~~Creating a native host~~
+* ~~Linking app with the native host~~
+* ~~Adding a preferences option~~
+* Adding a support Bahasa Indonesia
+* Adding more capabilities (such as to retrieve search results etc)
