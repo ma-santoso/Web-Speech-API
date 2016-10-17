@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	} else {
 		var recognition = new webkitSpeechRecognition();
 		var listening = false;
-		var trigger = ['open','run','execute','launch'];
+		var trigger = ['open','run','execute','launch','runn','execut'];
 		var article = ['a','an','the'];
 		var adjunct = [undefined,'please','for'];
 		var result = document.getElementById('result');
@@ -108,22 +108,22 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 		for (var i = 0; i < text.length; i++) {
 			for (var j = 0; j < trigger.length; j++) {
-				if (text[i] == trigger[j]) {							// compare the text to find the trigger word
-					x = i;												// save the word into a variable
-					for (var k = 0; k < article.length; k++) {			// scroll through the words after it
-						if (text[x+1] == article[k]) {					// compare those words to find if it contains an 'article'
-							a = x+2;										// if there is, the the 'alias' is located two words after the trigger word
+				if (text[i] == trigger[j] || text[i] == trigger[j]+'ing') {			// compare the text to find the trigger word
+					x = i;															// save the word into a variable
+					for (var k = 0; k < article.length; k++) {						// scroll through the words after it
+						if (text[x+1] == article[k]) {								// compare those words to find if it contains an 'article'
+							a = x+2;												// if there is, the the 'alias' is located two words after the trigger word
 							break;
 						} else {
-							a = x+1;										// otherwise, the 'alias' word is located right after the trigger word
+							a = x+1;												// otherwise, the 'alias' word is located right after the trigger word
 						}
 					}
 					for (var l = 0; l < adjunct.length; l++) {
-						if (text[a+1] == adjunct[l]) {					// also compare those words to find out if there is an 'adjunct'
-							b = a;											// if there is, the 'app' only consists of one word and is equal to 'alias'
+						if (text[a+1] == adjunct[l]) {								// also compare those words to find out if there is an 'adjunct'
+							b = a;													// if there is, the 'app' only consists of one word and is equal to 'alias'
 							break;
 						} else {
-							b = a+1;										// otherwise, the 'app' consists of two words -- the 'alias' and the word after it
+							b = a+1;												// otherwise, the 'app' consists of two words -- the 'alias' and the word after it
 						}
 					}
 				}
@@ -142,17 +142,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 			console.log('a:',a,'\talias:',word.alias);
 			console.log('b:',b,'\tparsed:',word.app);
-			displayResult('PARSED TEXT: ', word.app);
+			displayResult('PARSED TEXT: ', word.app.toLowerCase());
 
-			for (var i = 0; i < alias.length; i++) {						// look for a recognized app name
-				if (word.alias == alias[i]) {								// and launch the mentioned app if it's matched
-					execute(word.alias);
-					displayResult('STATUS: Launching ', word.app);
-				} else {													// if not then display that there's no app mentioned
-					displayResult('No app registered with that name', '');
-					showInfo('er_noapp');
-				}
-			}
+			execute(word.alias.toLowerCase());
 		}
 	}
 
@@ -217,6 +209,10 @@ document.addEventListener('DOMContentLoaded', function() {
 			if (app == alias[i]) {
 				chrome.runtime.sendNativeMessage("message",{"text":"launch " + program[i]});
 				console.log('Launching', name[i]);
+				showInfo('info_launched');
+				break;
+			} else {
+				console.log('No app registered with that name', '');
 			}
 		}
 	}
